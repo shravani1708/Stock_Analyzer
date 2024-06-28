@@ -11,5 +11,6 @@ matplotlib
 scikit_learn
 statsmodels
 yfinance
+alpha_vantage==2.3.1
 gunicorn
 Werkzeug==2.2.2
