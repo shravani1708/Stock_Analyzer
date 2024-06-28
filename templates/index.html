@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Stock Analyzer</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
+
+    <!-- Custom styles -->
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #051b39, #141452, #051b39);
+            color: #FDDA0D;
+            font-size: 48px; /* Increased font size for zoom effect */
+        }
+
+        .container {
+            display: flex;
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
+            height: 100vh; /* Full viewport height */
+            padding: 0 120px; /* Increase horizontal padding for zoom effect */
+        }
+
+        .form-container {
+            border: 5px solid white; /* Thick white border */
+            padding: 120px; /* Increase padding for zoom effect */
+            box-sizing: border-box; /* Include padding in width */
+            background-color: rgba(10, 10, 42, 0.8); /* Semi-transparent background */
+            border-radius: 25px; /* Round the corners */
+        }
+
+        .svg-image {
+            max-height: 80vh; /* Limit image height */
+            width: auto; /* Allow image to adjust its width */
+            margin-right: 120px; /* Increase margin between SVG and form for zoom effect */
+            margin-left: -300px; /* Adjust left margin for zoom effect */
+        }
+
+        .form-control {
+            width: 800px; /* Increase input field width for zoom effect */
+            background-color: #0a0a2a; /* Very dark blue */
+            border: 5px solid white; /* Thick white border */
+            color: white; /* White text */
+            font-size: 48px; /* Increase font size for zoom effect */
+            text-align: center; /* Center text */
+            margin-right: 120px; /* Increase right margin for zoom effect */
+            margin-top: 120px; /* Increase top margin for zoom effect */
+            margin-bottom: 120px; /* Increase bottom margin for zoom effect */
+        }
+
+        .btn-login {
+            background-color: #F33A6A; /* Red button */
+            border-color: #F33A6A; /* Red border */
+            color: #fff; /* White text */
+            font-size: 48px; /* Increase font size for zoom effect */
+            padding: 40px 80px; /* Increase padding for zoom effect */
+            margin-top: 120px; /* Increase top margin for zoom effect */
+            margin-bottom: 120px; /* Increase bottom margin for zoom effect */
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .btn-login:hover {
+            background-color: #d81b44; /* Darker red on hover */
+        }
+
+        .alert-danger {
+            background-color: #DC143C; /* Red alert background color */
+            color: white; /* White alert text color */
+            border-color: #d43f3a; /* Red alert border color */
+            margin-bottom: 120px; /* Increase bottom margin for zoom effect */
+            font-size: 48px; /* Increase font size for zoom effect */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- SVG Image -->
+        <div class="svg-image">
+            <img src="{{ url_for('static', filename='profit-bar-chart-finance-svgrepo-com.svg') }}" alt="SVG Image" class="svg-image">
+        </div>
+
+        <!-- Login Form -->
+        <div class="form-container">
+            <div class="card">
+                <h1>PLEASE ENTER A STOCK SYMBOL</h1>
+                <div class="card-body">
+                    <form id="stock-form" action="{{ url_for('insertintotable') }}" method="POST">
+                        {% if not_found %}
+                        <div class="alert alert-danger" role="alert">
+                            Stock Symbol (Ticker) Not Found. Please Enter a Valid Stock Symbol
+                        </div>
+                        {% endif %}
+                        <input type="text" class="form-control" name="nm" placeholder="Company Stock Symbol">
+                        <button id="predict-btn" class="btn btn-login">PREDICT</button>
+                    </form>
+                    <div id="analyzing-text" style="display: none;">Analyzing...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to display "Analyzing..." -->
+    <script>
+        document.getElementById("predict-btn").addEventListener("click", function () {
+            document.getElementById("analyzing-text").style.display = "block";
+        });
+    </script>
+
+</body>
+
+</html>

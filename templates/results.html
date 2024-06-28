@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Analysis Results</title>
+    <style>
+        body {
+            background-color: #0a0a2a; /* Very dark blue */
+            color: red; /* Red text */
+            font-family: Arial, sans-serif; /* Use Arial font */
+            text-align: center; /* Center align text */
+            font-size: 30px; /* Increase font size for the entire page */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        
+
+        .section {
+            border: 4px solid red; /* Red border */
+            border-radius: 20px; /* Rounded corners */
+            padding: 60px; /* Increase padding */
+            margin: 60px auto; /* Center align and add margin */
+            max-width: 80%; /* Limit width */
+        }
+
+        .highlighted {
+            color: red;
+            font-weight: bold;
+            font-size: 34px; /* Increase font size for highlighted sections */
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            font-size: 30px; /* Increase font size for flex container */
+        }
+
+        .flex-item {
+            width: 48%;
+        }
+
+        .flex-item h2 {
+            font-size: 36px; /* Increase font size */
+            font-weight: bold; /* Increase font weight */
+        }
+
+        .flex-item p {
+            font-size: 40px; /* Increase font size */
+        }
+
+        .flex-item img {
+            width: 100%; /* Make the image width 100% of its container */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 30px; /* Adjust margin top */
+        }
+
+        img {
+            display: block; /* Make images block elements */
+            margin: 0 auto; /* Center align images */
+            max-width: 100%; /* Limit image width */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 60px; /* Increase space above images */
+        }
+
+        a {
+            display: block; /* Make link block element */
+            margin-top: 80px; /* Increase space above link */
+            color: red; /* Red link */
+            text-decoration: none; /* Remove underline */
+            font-size: 34px; /* Increase font size for links */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline link on hover */
+        }
+
+        .article-list {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0; /* Remove default padding */
+            font-size: 30px; /* Increase font size for article list */
+        }
+
+        .article-list li {
+            margin-bottom: 30px; /* Increase spacing between each list item */
+        }
+        .large-image {
+            width: 80%; /* Adjust the width as needed */
+            height: 1200px; /* Maintain aspect ratio */
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="section">
+        <h1>Results for {{ quote }}</h1>
+        <h1>Recent Trends</h1>
+        <img src="static/recent_trends.png" alt="Recent Trends" class="large-image">
+
+    </div>
+
+    <div class="section">
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>ARIMA Prediction</h2>
+                <p>Tomorrow's closing price prediction by ARIMA: {{ arima_pred }}</p>
+                <p>ARIMA RMSE: {{ error_arima }}</p>
+                <img src="static/ARIMA.png" alt="ARIMA Trends">
+            </div>
+            <div class="flex-item">
+                <h2>LSTM Prediction</h2>
+                <p>Tomorrow's closing price prediction by LSTM: {{ lstm_pred }}</p>
+                <p>LSTM RMSE: {{ error_lstm }}</p>
+                <img src="static/LSTM.png" alt="LSTM Trends">
+            </div>
+        </div>
+    </div>
+
+    <div class="section highlighted">
+        <h2>News Sentiment Analysis</h2>
+        <img src="static/sentiment_analysis.png" alt="sentiment_analysis" class="large-image">
+        <h1>News Headlines:</h1>
+        <ul class="article-list">
+            {% for title in article_titles %}
+                <li>{{ title }}</li>
+            {% endfor %}
+        </ul>
+        <h1>Combined sentiment based on news articles: {{ combined_sentiment }}</h1>
+
+       <!-- Go Back Link -->
+       <a href="/">Go Back</a>
+
+    </div>
+</body>
+
+</html>
