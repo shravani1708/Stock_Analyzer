@@ -411,6 +411,3 @@ def insertintotable():
         plt.close()
         
         return render_template('results.html', quote=quote, arima_pred=round(arima_pred,2), lstm_pred=round(lstm_pred,2), error_arima=round(error_arima,2), error_lstm=round(error_lstm,2), combined_sentiment=combined_sentiment,article_titles=titles,sentiments=sentiments)
-
-if __name__ == '__main__':
-    threading.Thread(target=app.run, daemon=True).start()
