@@ -1,8 +1,7 @@
-tensorflow
+
 nltk==3.5
 keras
 numpy
-seaborn==0.11.1
 textblob==0.15.3
 Flask==2.0.1
 pandas
@@ -11,3 +10,4 @@ scikit_learn
 statsmodels
 yfinance
 waitress==2.1.2
+Werkzeug==2.2.2
