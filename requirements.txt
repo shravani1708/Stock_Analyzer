@@ -13,4 +13,4 @@ statsmodels
 yfinance
 alpha_vantage==2.3.1
 gunicorn
-https://pypi.anaconda.org/berber/simple/tweet-preprocessor/0.5.0/tweet-preprocessor-0.5.0.tar.gz
+Werkzeug==2.2.2
