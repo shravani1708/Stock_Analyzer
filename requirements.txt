@@ -1,7 +1,15 @@
+tensorflow
+nltk==3.5
+keras
+numpy
+seaborn==0.11.1
+tweepy
+textblob==0.15.3
 flask
 pandas
 matplotlib
 scikit_learn
 statsmodels
 yfinance
+gunicorn
 Werkzeug==2.2.2
