@@ -7,6 +7,7 @@ tweepy
 textblob==0.15.3
 flask
 pandas
+newsapi
 matplotlib
 scikit_learn
 statsmodels
