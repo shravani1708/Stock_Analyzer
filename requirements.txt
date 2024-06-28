@@ -3,11 +3,14 @@ nltk==3.5
 keras
 numpy
 seaborn==0.11.1
+tweepy
 textblob==0.15.3
-Flask==2.0.1
+flask
 pandas
 matplotlib
 scikit_learn
 statsmodels
 yfinance
-waitress==2.1.2
+alpha_vantage==2.3.1
+gunicorn
+Werkzeug==2.2.2
